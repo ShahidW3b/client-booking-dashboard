@@ -106,7 +106,7 @@ const products = [
     name: "Client Booking System",
     desc: "A reusable booking workflow that can be connected to forms, email notifications, or a database.",
     price: "Studio-ready",
-    link: "https://axonyra.vercel.app/",
+    link: "https://client-booking-dashboard-phi.vercel.app/",
   },
   {
     name: "ShahidW3b Admin Dashboard",
