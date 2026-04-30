@@ -8,7 +8,7 @@ The platform presents booking activities, service structures, team responsibilit
 
 ## 📸 Preview
 
-<a href="https://your-live-demo-link.com/"><strong>➥ Live Demo</strong></a>
+<a href="https://client-booking-dashboard-1ur9fk45j-shahabs-projects-654ac3d3.vercel.app/"><strong>➥ Live Demo</strong></a>
 
 <img src="preview.png" alt="Preview" width="800"/>
 
