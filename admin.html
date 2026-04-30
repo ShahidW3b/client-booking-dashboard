@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShahidW3b | Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="file.js" defer></script>
+  </head>
+  <body>
+    <div class="app" id="app">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <button class="burger" id="burgerBtn" aria-label="Toggle sidebar">
+            ☰
+          </button>
+
+          <div class="brand-block">
+            <a
+              href="https://shahidw3b.com"
+              target="_blank"
+              style="text-decoration: none"
+            >
+              <div class="logo">SW<span>&lt;/&gt;</span></div>
+            </a>
+
+            <div class="brand-text">
+              <strong>ShahidW3b</strong>
+              <span>Smart & Fast</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">Production-ready admin control system</div>
+
+        <nav class="nav" id="nav">
+          <button class="active" data-view="dashboard">
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Dashboard</span>
+          </button>
+
+          <button data-view="bookings">
+            <span class="nav-icon">◷</span>
+            <span class="nav-label">Bookings</span>
+          </button>
+
+          <button data-view="services">
+            <span class="nav-icon">✦</span>
+            <span class="nav-label">Services</span>
+          </button>
+
+          <button data-view="team">
+            <span class="nav-icon">☷</span>
+            <span class="nav-label">Team</span>
+          </button>
+
+          <button data-view="products">
+            <span class="nav-icon">⬡</span>
+            <span class="nav-label">Products</span>
+          </button>
+
+          <button data-view="courses">
+            <span class="nav-icon">▣</span>
+            <span class="nav-label">Courses / Terms</span>
+          </button>
+
+          <button data-view="analytics">
+            <span class="nav-icon">⌁</span>
+            <span class="nav-label">Analytics</span>
+          </button>
+
+          <button data-view="settings">
+            <span class="nav-icon">⚙</span>
+            <span class="nav-label">Settings</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          ShahidW3b • Workflow-ready admin platform
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="topbar">
+          <div class="page-title">
+            <h1 id="pageHeading">Service Dashboard</h1>
+            <p id="pageSubheading">
+              A studio-ready control center for ShahidW3b bookings, services,
+              team responsibilities, products, settings, and analytics.
+            </p>
+          </div>
+
+          <div class="top-actions">
+            <select
+              class="select role-select"
+              id="roleSelect"
+              title="Role mode"
+            >
+              <option value="admin">Admin Mode</option>
+              <option value="viewer">Viewer Mode</option>
+            </select>
+
+            <button class="btn" id="exportBtn">
+              <span>Export Report</span>
+            </button>
+
+            <button class="btn btn-primary" id="openBookingBtn">
+              <strong>+ New Booking</strong>
+              <span>↗</span>
+            </button>
+          </div>
+        </div>
+
+        <section class="view active" id="dashboardView">
+          <div class="hero-grid">
+            <div class="card welcome-card">
+              <div class="welcome-content">
+                <div class="eyebrow">ShahidW3b Command Center</div>
+                <h2>Manage every client service from one premium dashboard.</h2>
+                <p>
+                  A real admin dashboard for managing website projects, essay
+                  writing support, language preparation, manuscript writing
+                  help, and digital product requests in one place.
+                </p>
+              </div>
+
+              <div
+                class="welcome-content top-actions"
+                style="justify-content: flex-start; margin-top: 22px"
+              >
+                <button class="btn btn-primary" data-quick-view="bookings">
+                  <strong>Manage Bookings</strong>
+                  <span>→</span>
+                </button>
+
+                <button class="btn" data-quick-view="services">
+                  <span>View Services</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="panel-title">
+                <h3>Recent Activity</h3>
+                <span>Live queue</span>
+              </div>
+
+              <div class="activity-list" id="activityList"></div>
+            </div>
+          </div>
+
+          <div class="stats" id="statsGrid"></div>
+
+          <div class="content-grid">
+            <div class="card">
+              <div class="panel-title">
+                <h3>Latest Bookings</h3>
+                <span>Client requests</span>
+              </div>
+
+              <div id="dashboardTable"></div>
+            </div>
+
+            <div class="card">
+              <div class="panel-title">
+                <h3>Service Mix</h3>
+                <span>This month</span>
+              </div>
+
+              <div class="chart" id="miniChart"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="bookingsView">
+          <div class="card">
+            <div class="panel-title">
+              <h3>Bookings</h3>
+              <span>
+                Search, filter, and set each booking as Pending, Confirmed, or
+                Rejected
+              </span>
+            </div>
+
+            <div class="controls">
+              <input
+                class="input"
+                id="searchInput"
+                placeholder="Search client, service, or email"
+              />
+
+              <select class="select" id="statusFilter">
+                <option>All</option>
+                <option>Pending</option>
+                <option>Confirmed</option>
+                <option>Rejected</option>
+              </select>
+            </div>
+
+            <div id="bookingsTable"></div>
+          </div>
+        </section>
+
+        <section class="view" id="servicesView">
+          <div class="card">
+            <div class="panel-title">
+              <h3>Services</h3>
+              <span>Bookable offer catalog</span>
+            </div>
+
+            <div class="service-grid" id="servicesGrid"></div>
+          </div>
+        </section>
+
+        <section class="view" id="teamView">
+          <div class="card">
+            <div class="panel-title">
+              <h3>Team Responsibilities</h3>
+              <span>Who handles each service area</span>
+            </div>
+
+            <div class="service-grid" id="teamGrid"></div>
+          </div>
+        </section>
+
+        <section class="view" id="productsView">
+          <div class="card">
+            <div class="panel-title">
+              <h3>Products</h3>
+              <span>Built systems and digital products</span>
+            </div>
+
+            <div class="product-grid" id="productsGrid"></div>
+          </div>
+        </section>
+
+        <section class="view" id="coursesView">
+          <div class="card">
+            <div class="panel-title">
+              <h3>Courses / Terms</h3>
+              <span>Preparation plans and service terms</span>
+            </div>
+
+            <div class="course-grid" id="coursesGrid"></div>
+          </div>
+        </section>
+
+        <section class="view" id="analyticsView">
+          <div class="stats" id="analyticsStats"></div>
+
+          <div class="pipeline-grid" id="pipelineGrid"></div>
+
+          <div class="card">
+            <div class="panel-title">
+              <h3>Monthly Booking Analytics</h3>
+              <span>Service demand trend</span>
+            </div>
+
+            <div class="chart" id="analyticsChart"></div>
+          </div>
+        </section>
+
+        <section class="view" id="settingsView">
+          <div class="card">
+            <div class="panel-title">
+              <h3>Settings</h3>
+              <span>Dashboard configuration</span>
+            </div>
+
+            <div class="service-grid">
+              <div class="service-card">
+                <strong>Brand Identity</strong>
+                <p>ShahidWeb · Build smarter. Launch faster.</p>
+                <span class="price">Active</span>
+              </div>
+
+              <div class="service-card">
+                <strong>Booking Mode</strong>
+                <p>
+                  Manual review first: keep pending, confirm approved requests,
+                  or reject unsuitable requests.
+                </p>
+                <span class="price">Protected</span>
+              </div>
+
+              <div class="service-card">
+                <strong>Notifications</strong>
+                <p>Ready for email, form, or database connection.</p>
+                <span class="price">Ready</span>
+              </div>
+
+              <div class="service-card">
+                <strong>Data Layer</strong>
+                <p>Static frontend now, Studio/Supabase-ready next.</p>
+                <span class="price">Scalable</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal" id="bookingModal" aria-hidden="true">
+      <div class="modal-panel">
+        <div class="panel-title">
+          <div>
+            <h3 id="modalTitle">Create New Booking</h3>
+            <span id="modalDescription"
+              >Add a real client request to the dashboard table.</span
+            >
+          </div>
+
+          <button class="btn" id="closeModalBtn">
+            <span>Close</span>
+          </button>
+        </div>
+
+        <form class="form-grid" id="bookingForm">
+          <div class="form-row">
+            <input
+              class="input"
+              name="client"
+              placeholder="Client name"
+              required
+            />
+
+            <input
+              class="input"
+              name="email"
+              type="email"
+              placeholder="Email address"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <select class="select" name="service" required>
+              <option value="">Choose service</option>
+              <option>Website Design</option>
+              <option>Essay Writing Help</option>
+              <option>Language Preparation</option>
+              <option>Manuscript Writing Help</option>
+            </select>
+
+            <select class="select" name="status" required>
+              <option>Pending</option>
+              <option>Confirmed</option>
+              <option>Rejected</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <input class="input" name="date" type="date" required />
+
+            <input
+              class="input"
+              name="price"
+              type="number"
+              min="0"
+              placeholder="Estimated value ($)"
+              required
+            />
+          </div>
+
+          <textarea
+            class="textarea"
+            name="notes"
+            placeholder="Request notes"
+          ></textarea>
+
+          <div class="modal-actions">
+            <button type="button" class="btn" id="resetFormBtn">
+              <span>Reset</span>
+            </button>
+
+            <button type="submit" class="btn btn-primary" id="bookingSubmitBtn">
+              <strong>Add Booking</strong>
+              <span>↗</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast" id="toast">Updated successfully.</div>
+  </body>
+</html>
